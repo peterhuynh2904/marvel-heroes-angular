@@ -1,0 +1,59 @@
+@import "../../../styles/theme";
+
+$app-navigation: (
+  colour: (
+    primary: map-get-deep($theme, primary),
+    active: map-get-deep($theme, active),
+    background: map-get-deep($foreground-palette, white)
+  ),
+  font: (
+    size: rem(16),
+    weight: map-get-deep($config-typography-weight, bold, font-weight),
+  ),
+);
+
+.app-navigation {
+  background: map-get-deep($app-navigation, colour, background);
+  border-bottom: rem(1) solid map-get-deep($app-navigation, colour, primary);
+  box-shadow: $drop-shadow;
+
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-right: 20px;
+      padding: 20px 0;
+      position: relative;
+
+      a {
+        color: map-get-deep($app-navigation, colour, primary);
+        font-size: map-get-deep($app-navigation, font, size);
+        font-weight: map-get-deep($app-navigation, font, weight);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      &::after {
+        @include animation(all);
+        @include position(absolute, null, 0, rem(10), 0);
+        background: transparent;
+        content: " ";
+        display: block;
+        height: rem(3);
+        width: 0;
+      }
+
+      &:hover {
+        &::after {
+          background: map-get-deep($app-navigation, colour, active);
+          width: 100%;
+        }
+      }
+    }
+  }
+}

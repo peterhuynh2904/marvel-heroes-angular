@@ -1,0 +1,41 @@
+$app-form: (
+  color: (
+    text: map-get-deep($foreground-palette, white),
+    background: map-get-deep($theme, primary)
+  ),
+  font: (
+    size: rem(18),
+    weight: map-get-deep($config-typography-weight, bold, font-weight),
+    style: italic
+  ),
+  input: (
+    radius: rem(4)
+  )
+);
+
+.app-form {
+  .app-form__label {
+    font-size: map-get-deep($app-form, font, size);
+    font-style: map-get-deep($app-form, font, style);
+    font-weight: map-get-deep($app-form, font, weight);
+    margin-bottom: rem(10);
+  }
+
+  .app-form__input {
+    margin-bottom: rem(10);
+
+    input {
+      background-color: map-get-deep($app-form, color, background);
+      border: 0;
+      border-radius: map-get-deep($app-form, input, radius);
+      color: map-get-deep($app-form, color, text);
+      padding: rem(10) rem(20);
+      text-transform: uppercase;
+      width: 100%;
+
+      &:focus {
+        border: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="characters__search">
+    <div class="characters__search__bar app-form mb-30">
+      <div class="app-form__label">
+        <label for="character-search">{{ searchCopy.label | copyMatrix }}</label>
+      </div>
+      <div class="app-form__input">
+        <input name="character-search"
+               placeholder="{{ searchCopy.placeholder | copyMatrix}}"
+               autocomplete="off"
+               #characterSearch
+               (keyup)="searchName.next(characterSearch.value)" />
+      </div>
+    </div>
+
+    <div class="characters__search__result"
+         *ngIf="characters | async as characters">
+      <ng-container *ngIf="characters.length">
+        <div class="mb-30">
+          <h3>{{ searchCopy.found | copyMatrix }}</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-lg-3 mb-30"
+               *ngFor="let character of characters">
+            <app-character-card [character]="character"></app-character-card>
+          </div>
+        </div>
+      </ng-container>
+      <div *ngIf="characters.length === 0">
+        {{ searchCopy.notfound | copyMatrix}}
+      </div>
+    </div>
+    <div *ngIf="errorMessage"
+         class="js-error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

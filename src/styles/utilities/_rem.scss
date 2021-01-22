@@ -1,0 +1,14 @@
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function rem($size) {
+  $unitles-size: strip-unit($size);
+  $rem-size: $unitles-size / 10;
+
+  @return $rem-size * 1rem;
+}

@@ -1,0 +1,26 @@
+$neutral: (
+  0:      #fff,
+  500:    #f5f6fa,
+  600:    #dcdde1
+);
+
+$theme: (
+  primary:                var(--theme-primary, #1c1c1c),
+  secondary:              var(--theme-secondary, #fff),
+  typography-primary:     var(--theme-typography-primary, #1c1c1c),
+  typography-secondary:   var(--theme-typography-secondary, #fff),
+  success:                var(--theme-success, #44bd32),
+  error:                  var(--theme-error, #e84118),
+  active:                 var(--theme-active, #e50914),
+  inactive:               var(--theme-inactive, #718093),
+);
+
+$foreground-palette: (
+  white:    map-get($neutral, 0),
+  light:    map-get($neutral, 500),
+  dark:     map-get($neutral, 600),
+);
+
+$overlay: (
+  dark: #e50914
+);

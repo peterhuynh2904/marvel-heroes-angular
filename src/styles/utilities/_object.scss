@@ -1,0 +1,7 @@
+@mixin object-cover {
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  position: absolute;
+  width: 100%;
+}

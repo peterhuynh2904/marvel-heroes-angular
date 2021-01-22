@@ -1,0 +1,11 @@
+$border-radius: var(--theme-border-radius, rem(4));
+$border-width: 1rem;
+
+$drop-shadow: 0.6rem 0.6rem 1.5rem 0 rgba(0, 0, 0, 0.2);
+
+$animation-speed: (
+  standard: 300ms
+);
+$animation-timing: (
+  standard: cubic-bezier(0.1, 0.7, 1, 0.1) 0,
+);

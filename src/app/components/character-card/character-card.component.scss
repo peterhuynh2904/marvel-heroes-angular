@@ -1,0 +1,79 @@
+@import "../../../styles/theme";
+
+$character-card: (
+  card: (
+    size: rem(300),
+    shadowsize: 0 0 rem(10) 0,
+    border: rem(4),
+    radius: rem(4),
+  ),
+  colour: (
+    primary: map-get-deep($theme, primary),
+    secondary: map-get-deep($theme, secondary)
+  ),
+  font: (
+    size: rem(18),
+    weight: map-get-deep($config-typography-weight, bold, font-weight),
+    style: italic
+  ),
+);
+
+.character-card {
+  @include animation(box-shadow);
+  border: map-get-deep($character-card, card, border) solid map-get-deep($character-card, colour, primary);
+  border-radius: map-get-deep($character-card, card, radius);
+  box-shadow: map-get-deep($character-card, card, shadowsize) map-get-deep($character-card, colour, primary);
+  height: map-get-deep($character-card, card, size);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  .character-card__link {
+    @include animation(color);
+    @include position(absolute, null, 0, 0, 0);
+    background: map-get-deep($character-card, colour, primary);
+    color: map-get-deep($character-card, colour, secondary);
+    font-size: map-get-deep($character-card, font, size);
+    font-style: map-get-deep($character-card, font, style);
+    font-weight: map-get-deep($character-card, font, weight);
+    margin: 0;
+    opacity: 0.8;
+    padding: rem(10) rem(20);
+    text-transform: uppercase;
+    z-index: 1;
+
+    span {
+      @include animation(transform);
+      display: inline-block;
+    }
+  }
+
+  .character-card__thumbnail {
+    img {
+      @include animation(transform);
+      @include object-cover;
+      cursor: pointer;
+      transform: scale3d(1.05, 1.05, 1);
+    }
+  }
+
+  &:hover {
+    border: map-get-deep($character-card, card, border)  solid map-get-deep($character-card, colour, secondary);
+    box-shadow: map-get-deep($character-card, card, shadowsize) map-get-deep($character-card, colour, secondary);
+
+    .character-card__link {
+      background: map-get-deep($character-card, colour, secondary);
+      color: map-get-deep($character-card, colour, primary);
+
+      span {
+        transform: translate(rem(10), 0);
+      }
+    }
+
+    .character-card__thumbnail {
+      img {
+        transform: scale3d(1.001, 1.001, 1);
+      }
+    }
+  }
+}

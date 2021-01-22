@@ -1,0 +1,24 @@
+@import "../../../styles/theme";
+
+$app-header: (
+  color: (
+    background: map-get-deep($theme, primary),
+    text: map-get-deep($theme, secondary)
+  ),
+  icon: (
+    size: rem(130)
+  )
+);
+
+.app-header {
+  background: map-get-deep($app-header, color, background);
+
+  a {
+    color: map-get-deep($app-header, color, text);
+    text-decoration: none;
+  }
+
+  .app-header__icon {
+    width: map-get-deep($app-header, icon, size);
+  }
+}

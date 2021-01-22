@@ -1,0 +1,7 @@
+@mixin animation-timing {
+  transition-timing-function: map-get-deep($animation-timing, standard);
+}
+@mixin animation($property: all) {
+  @include animation-timing;
+  transition: $property map-get-deep($animation-speed, standard);
+}

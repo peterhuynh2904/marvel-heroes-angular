@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="characters__list"
+       *ngIf="characters | async as characters; else loading">
+    <div class="mb-30">
+      <h3>{{ title | copyMatrix }}</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-lg-3 mb-30"
+           *ngFor="let character of characters">
+        <app-character-card [character]="character"></app-character-card>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    {{ loadingText | copyMatrix}}
+  </ng-template>
+  <div *ngIf="errorMessage"
+       class="js-error-message">
+    {{ errorMessage }}
+  </div>
+</div>

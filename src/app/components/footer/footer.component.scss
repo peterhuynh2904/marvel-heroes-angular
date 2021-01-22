@@ -1,0 +1,22 @@
+@import "../../../styles/theme";
+
+$app-footer: (
+  logo: (
+    size: rem(50)
+  ),
+  color: (
+    background: map-get-deep($theme, primary),
+    text: map-get-deep($foreground-palette, dark)
+  )
+);
+
+.app-footer {
+  background: map-get-deep($app-footer, color, background);
+  color: map-get-deep($app-footer, color, text);
+
+  .app-footer__logo {
+    svg {
+      height: map-get-deep($app-footer, logo, size);
+    }
+  }
+}

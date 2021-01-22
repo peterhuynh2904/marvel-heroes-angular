@@ -1,0 +1,38 @@
+<div class="container">
+  <ng-container *ngIf="character | async as character; else loading">
+    <div class="character__name">
+      <h1>{{character.name}}</h1>
+    </div>
+
+    <div class="character__detail row">
+      <div class="col-sm-4 character__portrait">
+        <img class="w-100 img-fluid"
+             src="{{character.thumbnail.path}}/portrait_incredible.{{character.thumbnail.extension}}"
+             alt="">
+      </div>
+      <div class="col-sm-8">
+        <div class="mb-30">{{character.description}}</div>
+        <div class="row mb-20">
+          <div class="col-sm-6"
+               *ngIf="character.events?.items && character.events?.items?.length">
+            <h3>Events</h3>
+            <ul>
+              <li *ngFor="let item of character.events?.items">{{item.name}}</li>
+            </ul>
+          </div>
+          <div class="col-sm-6"
+               *ngIf="character.series?.items && character.series?.items?.length">
+            <h3>Series</h3>
+            <ul>
+              <li *ngFor="let item of character.series?.items">{{item.name}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+  <ng-template #loading>
+    {{loadingText | copyMatrix}}
+  </ng-template>
+</div>
